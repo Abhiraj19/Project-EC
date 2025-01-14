@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.cart-container {
+    width: 90%;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-header {
+    background-color: #0073e6;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+.cart-content {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+.cart-items-section {
+    flex: 3;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.cart-summary {
+    flex: 1;
+    background-color: #f4f6f8;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.cart-summary h2 {
+    margin-bottom: 20px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.checkout-btn, .clear-cart-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.checkout-btn {
+    background-color: #28a745;
+    color: #ffffff;
+}
+
+.clear-cart-btn {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+
+/* Default styles for larger screens (already provided in the previous CSS) */
+
+/* For tablets (screen width up to 768px) */
+@media (max-width: 768px) {
+    .cart-content {
+        flex-direction: column; /* Stack sections vertically */
+        gap: 15px; /* Adjust spacing */
+    }
+
+    .cart-summary {
+        margin-top: 20px;
+    }
+
+    .cart-table td {
+        font-size: 14px; /* Smaller text for table */
+    }
+
+    .summary-total {
+        font-size: 16px; /* Slightly reduce total font size */
+    }
+
+    .checkout-btn, .clear-cart-btn {
+        font-size: 14px; /* Reduce button font size */
+        padding: 8px; /* Adjust padding */
+    }
+}
+
+/* For mobile phones (screen width up to 480px) */
+@media (max-width: 480px) {
+    .cart-container {
+        width: 95%; /* Increase container width for smaller screens */
+        margin: 10px auto;
+    }
+
+    .cart-content {
+        padding: 10px;
+    }
+
+    .cart-table {
+        font-size: 12px; /* Reduce overall font size in the table */
+    }
+
+    .cart-image {
+        width: 50px; /* Smaller image */
+        height: 50px;
+    }
+
+    .summary-total {
+        font-size: 14px;
+    }
+
+    .checkout-btn, .clear-cart-btn {
+        font-size: 12px; /* Further reduce button font size */
+        padding: 6px;
+    }
+}

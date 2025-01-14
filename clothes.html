@@ -17,13 +17,14 @@
                     <a href="#">Products</a>
                     <ul class="dropdown">
                         <li><a href="#">Electronics</a></li>
-                        <li><a href="clothes.html">Trendy-Clothes</a></li>
+                        <li><a href="clothes.html">Cosmatics</a></li>
                         <li><a href="#">Grocery</a></li>
                     </ul>
                 </li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#">Cart</a></li>
                 <li><a href="#">Login</a></li>
+                <!-- <li><a href="#">Cart</a></li> -->
            
                 
             </ul>
@@ -31,8 +32,31 @@
         </nav>
         
     </header>
+
     
     <main>
+        <div>
+            <label for="searchInput">Search Products:</label>
+            <input type="text" id="searchInput" placeholder="Search by name or brand..." />
+            <button id="searchButton">Search</button>
+            
+            <label for="filterByPrice">Sort by Price:</label>
+            <select id="filterByPrice">
+                <option value="">Default</option>
+                <option value="L">Low to High</option>
+                <option value="H">High to Low</option>
+            </select>
+        
+            <label for="filterByCategory">Filter by Category:</label>
+            <select id="filterByCategory">
+                <option value="all">All</option>
+                <option value="beauty">Beauty</option>
+                <option value="fragrances">Fragrance</option>
+                <option value="furniture">furniture</option>
+                <option value="groceries">Groceries</option>
+                <!-- Add other categories as needed -->
+            </select>
+        </div>
         <div id="mainCont">
 
         </div>
