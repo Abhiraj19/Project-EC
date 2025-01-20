@@ -1,0 +1,154 @@
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfdfd; /* Light background color */
+    color: #333; /* Dark text for good contrast */
+}
+
+/* Header and Navigation */
+header {
+    background-color: #FF6F61; /* Bright coral color */
+    padding: 1rem 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #FFD700; /* Gold color on hover */
+}
+
+/* About Us Section */
+#about-us {
+    padding: 40px 0;
+    background-color: #FFF8E1; /* Light yellow for a fresh, bright feel */
+    text-align: center;
+}
+
+#about-us h1 {
+    color: #FF6F61; /* Same as header color */
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+#about-us p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Mission, Vision, Team */
+section h2 {
+    font-size: 26px;
+    color: #FF6F61; /* Bright coral */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+section p {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.7;
+}
+
+/* Meet the Team Section */
+#meet-the-team {
+    background-color: #F1F8E9; /* Light greenish background for the team section */
+    padding: 50px 0;
+}
+
+.team-member {
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff; /* White background for each card */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px); /* Slight hover effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.team-member h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.team-member p {
+    font-size: 16px;
+    color: #777;
+}
+
+/* Contact Section */
+#contact-us {
+    padding: 50px 0;
+    background-color: #E1F5FE; /* Soft blue background */
+    text-align: center;
+}
+
+#contact-us ul {
+    list-style: none;
+    padding: 0;
+    font-size: 18px;
+}
+
+#contact-us ul li {
+    margin: 15px 0;
+}
+
+#contact-us a {
+    color: #FF6F61; /* Bright coral color */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+#contact-us a:hover {
+    color: #FFD700; /* Gold on hover */
+}
+
+/* Footer */
+footer {
+    background-color: #FF6F61; /* Bright coral */
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 16px;
+}

@@ -362,114 +362,130 @@ footer {
 /* Default styles for larger screens */
 
 /* Mobile Devices (up to 767px) */
+/* Mobile Devices (up to 767px) */
 @media (max-width: 767px) {
-    header h1 {
-        font-size: 1.5rem;
-        text-align: center;
-    }
-
     #Nav ul {
-        flex-direction: column;
+        flex-direction: row;
         text-align: center;
+        flex-wrap: wrap;
     }
 
     #Nav ul li {
-        margin: 5px 0;
-    }
-
-    .dropdown {
-        position: static;
+        margin: 10px 0;
     }
 
     .slideshow-container {
-        height: 200px;
+        width: 100%;
+        height: auto;
     }
 
     .slide_images {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
+        height: 250px;
     }
 
-    .slide_card {
-        flex: 0 0 100%;
-        margin: 10px 0;
-    }
-
-    .offer-card {
-        flex: 0 0 100%;
-        margin: 10px 0;
-    }
-
-    .offer-text h3 {
-        font-size: 1rem;
-    }
-
-    .offer-text h2 {
-        font-size: 1.2rem;
-    }
-
-    .offer-text button {
-        font-size: 0.9rem;
+    #new_trend {
+        grid-template-columns: 1fr 1fr;
     }
 
     #cate h1 {
-        font-size: 1.5rem;
+        font-size: 20px;
     }
 
-    footer p {
-        font-size: 0.9rem;
-        text-align: center;
+    .offer-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .offer-text h3 {
+        font-size: 18px;
+    }
+
+    .offer-text h2 {
+        font-size: 20px;
+    }
+
+    .slide_card {
+        min-width: 100%;
+    }
+
+    .dots-container {
+        display: none;
     }
 }
 
-/* Tablets (768px to 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
-    header h1 {
-        font-size: 2rem;
-    }
-
+/* Tablet Devices (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
     #Nav ul {
-        justify-content: space-around;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
-    .slideshow-container {
-        height: 300px;
+    #Nav ul li {
+        margin: 10px;
+    }
+
+    #new_trend {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .slide_images {
-        width: 100%;
         height: 300px;
-        object-fit: cover;
-    }
-
-    .slide_card {
-        flex: 0 0 45%;
-        margin: 10px;
-    }
-
-    .offer-card {
-        flex: 0 0 48%;
-        margin: 10px;
     }
 
     .offer-text h3 {
-        font-size: 1.2rem;
+        font-size: 20px;
     }
 
     .offer-text h2 {
-        font-size: 1.5rem;
+        font-size: 22px;
     }
 
-    .offer-text button {
-        font-size: 1rem;
+    .slideshow-container {
+        width: 100%;
+        height: auto;
     }
 
-    #cate h1 {
-        font-size: 1.8rem;
+    .slide_card {
+        min-width: 48%;
+    }
+}
+
+/* Desktop Devices (1024px and above) */
+@media (min-width: 1024px) {
+    #Nav ul {
+        justify-content: center;
     }
 
-    footer p {
-        font-size: 1rem;
+    #new_trend {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .slideshow-container {
+        width: 100%;
+        height: 400px;
+    }
+
+    .slide_images {
+        height: 400px;
+    }
+
+    .offer-text h3 {
+        font-size: 22px;
+    }
+
+    .offer-text h2 {
+        font-size: 24px;
+    }
+
+    .slide_card {
+        min-width: 300px;
+    }
+
+    .slide_nav {
+        font-size: 30px;
+    }
+
+    .dots-container {
+        display: block;
     }
 }

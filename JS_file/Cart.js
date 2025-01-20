@@ -46,12 +46,13 @@ function renderCart() {
             const row = document.createElement("tr");
 
             // Handle missing image paths gracefully
-            const imageSrc = item.thumbnail || item.image || "https://via.placeholder.com/150"; // Fallback to a default image
+            const imageSrc =item.img|| item.thumbnail || item.image || "https://via.placeholder.com/150"; // Fallback to a default image
 
             row.innerHTML = `
                 <td>
                     <img src="${imageSrc}" alt="${item.title}" class="cart-image"> 
-                    <span>${item.title}</span>
+                    <span>${item.brand||item.brand}</span> 
+                     <span>${item.title||item.category}</span>
                 </td>
                 <td>
                     <button class="quantity-btn" data-index="${index}" data-action="decrease">-</button>

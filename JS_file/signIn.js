@@ -7,27 +7,37 @@ signinForm.addEventListener('submit', function (e) {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    // Retrieve user data from localStorage
+    if (!email || !password) {
+        messageDiv.textContent = "Please fill out all fields.";
+        messageDiv.className = "message error";
+        return;
+    }
+
     let userlist = JSON.parse(localStorage.getItem("form")) || [];
 
-    if (userlist.length > 0) {
-        // Find user with matching email and password
-        const validUser = userlist.find(user => user.email === email && user.password === password);
-
-        if (validUser) {
-            messageDiv.textContent = "Sign-In Successful! Redirecting...";
-            messageDiv.className = "message success";
-
-            // Redirect to a dashboard or home page
-            setTimeout(() => {
-                window.location.href = "Home.html";
-            }, 1000);
-        } else {
-            messageDiv.textContent = "Invalid Email or Password!";
-            messageDiv.className = "message error";
-        }
-    } else {
+    if (userlist.length === 0) {
         messageDiv.textContent = "No users found. Please register first.";
+        messageDiv.className = "message error";
+        return;
+    }
+
+    const validUser = userlist.find(user => user.email === email && user.password === password);
+    const admin = userlist.find(user => user.email === "admin@gmail.com" && user.password === "admin");
+
+    if (admin) {
+        messageDiv.textContent = "Admin Login Successful! Redirecting...";
+        messageDiv.className = "message success";
+        setTimeout(() => {
+            window.location.href = "admin.html";
+        }, 1000);
+    } else if (validUser) {
+        messageDiv.textContent = "Sign-In Successful! Redirecting...";
+        messageDiv.className = "message success";
+        setTimeout(() => {
+            window.location.href = "Home.html";
+        }, 1000);
+    } else {
+        messageDiv.textContent = "Invalid Email or Password!";
         messageDiv.className = "message error";
     }
 });

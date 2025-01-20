@@ -1,4 +1,4 @@
-const API_URL = 'https://dummyjson.com/products/';
+const API_URL = 'https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-tech-products/';
 const productDetailsContainer = document.getElementById('productDetails');
 const relatedProductsContainer = document.getElementById('relatedProducts');
 
@@ -24,8 +24,10 @@ async function fetchProductDetails() {
         productDetailsContainer.innerHTML = '<p>Loading product details...</p>';
         const product = await fetchWithRetry(`${API_URL}${productId}`, 3);
 
-        displayProductDetails(product);
-        fetchRelatedProducts(product.id);
+        console.log("Product fetched:", product.data);
+
+        displayProductDetails(product.data);
+        fetchRelatedProducts(product.data.id);
     } catch (error) {
         console.error('Error fetching product details:', error);
         productDetailsContainer.innerHTML = '<p>Error fetching product details.</p>';
@@ -34,19 +36,20 @@ async function fetchProductDetails() {
 
 // Display Product Details
 function displayProductDetails(product) {
-    const imageSrc = product.thumbnail || (product.images && product.images[0]) || 'https://via.placeholder.com/150';
+    const imageSrc = product.img || 'https://via.placeholder.com/150';
     productDetailsContainer.innerHTML = `
         <div class="product-detail-card">
-            <img src="${imageSrc}" alt="${sanitizeHTML(product.title)}">
-            <h2>${sanitizeHTML(product.title)}</h2>
+            <img src="${imageSrc}" alt="${sanitizeHTML(product.brand)}">
+            <h2><strong>Category:</strong> ${sanitizeHTML(product.category)}</h2>
             <p><strong>Brand:</strong> ${sanitizeHTML(product.brand)}</p>
-            <p><strong>Description:</strong> ${sanitizeHTML(product.description)}</p>
+            <p><strong>Description:</strong> ${sanitizeHTML(product.details)}</p>
             <p><strong>Price:</strong> $${product.price}</p>
             <button onclick="addToCart({
                 id: ${product.id}, 
                 price: ${product.price}, 
                 title: '${sanitizeHTML(product.title)}', 
-                brand: '${sanitizeHTML(product.brand)}',  // Pass the brand explicitly
+                brand: '${sanitizeHTML(product.brand)}', 
+                category: '${sanitizeHTML(product.category)}', 
                 thumbnail: '${imageSrc}'
             })">Add to Cart</button>
         </div>
@@ -57,9 +60,9 @@ function displayProductDetails(product) {
 async function fetchRelatedProducts(currentProductId) {
     try {
         relatedProductsContainer.innerHTML = '<p>Loading related products...</p>';
-        const data = await fetchWithRetry(`${API_URL}`, 3);
+        const data = await fetchWithRetry(API_URL, 3);
 
-        const relatedProducts = data.products.filter(product => product.id != currentProductId);
+        const relatedProducts = data.data.filter(product => product.id !== currentProductId);
         displayRelatedProducts(relatedProducts);
     } catch (error) {
         console.error('Error fetching related products:', error);
@@ -76,7 +79,7 @@ function displayRelatedProducts(products) {
 
 // Create Product Card
 function createProductCard(product) {
-    const imageSrc = product.thumbnail || (product.images && product.images[0]) || 'https://via.placeholder.com/150';
+    const imageSrc = product.img || product.thumbnail || (product.images && product.images[0]) || 'https://via.placeholder.com/150';
     return `
         <div class="related-product-card">
             <img src="${imageSrc}" alt="${sanitizeHTML(product.title)}">
@@ -93,17 +96,17 @@ function viewProduct(id) {
         alert("Invalid product ID!");
         return;
     }
-    window.location.href = `product-details.html?id=${id}`;
+    window.location.href = `electronics_product_details.html?id=${id}`;
 }
 
 // Add to Cart
-function addToCart({ id, price, title, brand, thumbnail }) {
+function addToCart({ id, price, title, brand, thumbnail, category }) {
     const imageSrc = thumbnail || 'https://via.placeholder.com/150';
     let cartArray = JSON.parse(localStorage.getItem("cart")) || [];
-    console.log("Adding to cart:", { id, price, title, brand });
+    console.log("Adding to cart:", { id, price, title, brand, category });
 
     if (!cartArray.some(item => item.id === id && item.brand === brand)) {
-        cartArray.push({ id, quantity: 1, price, title, brand, image: imageSrc });
+        cartArray.push({ id, quantity: 1, price, title, brand, category, image: imageSrc });
         localStorage.setItem("cart", JSON.stringify(cartArray));
         alert("Product added to cart!");
     } else {

@@ -3,24 +3,27 @@ let sort = document.getElementById("filterByPrice");
 let category = document.getElementById("filterByCategory");
 let searchInput = document.getElementById("searchInput");
 let searchButton = document.getElementById("searchButton");
-const API_URL = 'https://dummyjson.com/products';
+const API_URL = 'https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-tech-products';
 
 let originalData = []; // To store the original dataset
 let Cartarray = JSON.parse(localStorage.getItem("cart")) || []; // Initialize cart from localStorage
-console.log("here is clothesh cart",Cartarray);
-
 
 // Fetch Products from API
 async function fetchProducts() {
     try {
         const response = await fetch(API_URL);
-        const data = await response.json();
+        if (!response.ok) {
+            throw new Error('Failed to fetch products');
+        }
 
-        if (!data || !data.products) {
-            alert('Failed to fetch products');
+        const data = await response.json();
+        if (!data || !data.data) {
+            alert('No data available.');
             return;
         }
-        originalData = data.products; // Store original data once
+
+        originalData = data.data; // Store original data once
+        console.log("Here is the electronics page array", originalData);
         DisplayData(originalData);
     } catch (error) {
         console.error('Error fetching products:', error);
@@ -42,14 +45,14 @@ function DisplayData(data) {
         Cards.className = "product-card";
 
         let image = document.createElement("img");
-        image.setAttribute("src", ele.thumbnail || ele.images[0]);
+        image.setAttribute("src", ele.img||ele.thumbnail || (ele.images && ele.images[0]) || 'path/to/default/image.jpg');
         image.setAttribute("alt", ele.title);
 
         let brandName = document.createElement("h4");
         brandName.innerText = (ele.brand || "Unknown Brand").toUpperCase();
 
         let details = document.createElement("p");
-        details.innerText = ele.description;
+        details.innerText = ele.details;
 
         let price = document.createElement("h5");
         price.innerText = `Price: $${ele.price}`;
@@ -64,7 +67,7 @@ function DisplayData(data) {
         let BtnDetails = document.createElement("button");
         BtnDetails.innerText = `View Details`;
         BtnDetails.addEventListener("click", () => {
-            window.location.href = `product-details.html?id=${ele.id}`;
+            window.location.href = `electronics_product_details.html?id=${ele.id}`;
         });
 
         Cards.append(image, brandName, details, price, addToCartBtn, BtnDetails);
@@ -74,14 +77,17 @@ function DisplayData(data) {
 
 // Add Product to Cart
 function addToCart(product) {
-    if (!Cartarray.some((item) => item.id === product.id&&item.brand===product.brand)) {
+    if (!Cartarray.some((item) => item.id === product.id && item.brand===product.brand)) {
         Cartarray.push(product);
+        console.log("ggggg",product);
+        
         localStorage.setItem("cart", JSON.stringify(Cartarray));
         alert("Product added to cart!");
     } else {
         alert("Product already in cart.");
     }
 }
+
 
 // Search Functionality
 searchButton.addEventListener("click", function () {
@@ -98,17 +104,16 @@ searchButton.addEventListener("click", function () {
     DisplayData(filteredData);
 });
 
-
 // Sorting Functionality
 sort.addEventListener("change", function () {
     let sortedData;
 
     if (sort.value === "L") {
         // Sort Low to High
-        sortedData = [...originalData].sort((a, b) => a.price - b.price);
+        sortedData = [...originalData].sort((a, b) => (Number(a.price) || 0) - (Number(b.price) || 0));
     } else if (sort.value === "H") {
         // Sort High to Low
-        sortedData = [...originalData].sort((a, b) => b.price - a.price);
+        sortedData = [...originalData].sort((a, b) => (Number(b.price) || 0) - (Number(a.price) || 0));
     } else {
         // Default: Original Order
         sortedData = originalData;
