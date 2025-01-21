@@ -1,15 +1,8 @@
-/* Global Styles */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #fdfdfd; /* Light background color */
-    color: #333; /* Dark text for good contrast */
-}
+/* Global Styles (No Changes) */
 
 /* Header and Navigation */
 header {
-    background-color: #FF6F61; /* Bright coral color */
+    background-color: #FF6F61;
     padding: 1rem 0;
     text-align: center;
 }
@@ -20,8 +13,8 @@ nav ul {
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 20px;
+    display: inline-block;
+    margin: 0 15px;
 }
 
 nav ul li a {
@@ -33,18 +26,18 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #FFD700; /* Gold color on hover */
+    color: #FFD700;
 }
 
 /* About Us Section */
 #about-us {
     padding: 40px 0;
-    background-color: #FFF8E1; /* Light yellow for a fresh, bright feel */
+    background-color: #FFF8E1;
     text-align: center;
 }
 
 #about-us h1 {
-    color: #FF6F61; /* Same as header color */
+    color: #FF6F61;
     font-size: 32px;
     margin-bottom: 20px;
 }
@@ -58,7 +51,7 @@ nav ul li a:hover {
 /* Mission, Vision, Team */
 section h2 {
     font-size: 26px;
-    color: #FF6F61; /* Bright coral */
+    color: #FF6F61;
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -72,7 +65,7 @@ section p {
 
 /* Meet the Team Section */
 #meet-the-team {
-    background-color: #F1F8E9; /* Light greenish background for the team section */
+    background-color: #F1F8E9;
     padding: 50px 0;
 }
 
@@ -82,15 +75,15 @@ section p {
     text-align: center;
     margin: 20px;
     padding: 20px;
-    background-color: #ffffff; /* White background for each card */
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .team-member:hover {
-    transform: translateY(-10px); /* Slight hover effect */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .team-member img {
@@ -115,7 +108,7 @@ section p {
 /* Contact Section */
 #contact-us {
     padding: 50px 0;
-    background-color: #E1F5FE; /* Soft blue background */
+    background-color: #E1F5FE;
     text-align: center;
 }
 
@@ -130,19 +123,19 @@ section p {
 }
 
 #contact-us a {
-    color: #FF6F61; /* Bright coral color */
+    color: #FF6F61;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
 }
 
 #contact-us a:hover {
-    color: #FFD700; /* Gold on hover */
+    color: #FFD700;
 }
 
 /* Footer */
 footer {
-    background-color: #FF6F61; /* Bright coral */
+    background-color: #FF6F61;
     color: white;
     text-align: center;
     padding: 1rem 0;
@@ -151,4 +144,61 @@ footer {
 footer p {
     margin: 0;
     font-size: 16px;
+}
+
+/* Media Queries */
+
+/* Tablet View */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .team-member {
+        width: 45%;
+        margin: 15px auto;
+    }
+
+    #about-us h1 {
+        font-size: 28px;
+    }
+
+    section h2 {
+        font-size: 22px;
+    }
+
+    section p {
+        font-size: 16px;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 480px) {
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    .team-member {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    #about-us h1 {
+        font-size: 24px;
+    }
+
+    section h2 {
+        font-size: 20px;
+    }
+
+    section p {
+        font-size: 14px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+        width: 100%; /* Full-width buttons on smaller screens */
+        font-size: 14px;
+    }
 }
