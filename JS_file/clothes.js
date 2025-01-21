@@ -132,5 +132,29 @@ category.addEventListener("change", function () {
     }
 });
 
+let userlist = JSON.parse(localStorage.getItem("form"))||[]
+console.log("userlist is here",userlist);
+
+
+// let username = document.querySelector("#signin>a")
+
+
+
+// let userbtn = document.querySelector("#signin>img")
+
+
+
+let cartbtn = document.getElementById("cart")
+console.log("here is cartbutton",cartbtn)
+
+cartbtn.addEventListener("click",()=>{
+    if(userlist.length>0){
+     window.location.href = "Cart.html"
+    }else{
+        alert("Please Login First")
+        window.location.href = "signin.html"
+    }
+    
+})
 // Fetch Products on Page Load
 fetchProducts();

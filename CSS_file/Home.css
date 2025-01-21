@@ -282,9 +282,11 @@ footer {
 
 /* Image Styling */
 .offer-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%; /* Set a uniform width */
+    height: 250px; /* Set a uniform height */
+    object-fit: cover; /* Maintains aspect ratio and crops if needed */
+    border-radius: 8px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
 }
 
 /* Text Overlay */
@@ -296,7 +298,7 @@ footer {
     left: 0;
     width: 100%;
     background: linear-gradient(to top, rgba(0, 0, 0, 1.7), transparent);
-    color: red;
+    color: white;
     text-align: center;
     padding: 20px 0;
 }

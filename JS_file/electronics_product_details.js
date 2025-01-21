@@ -44,7 +44,7 @@ function displayProductDetails(product) {
             <p><strong>Brand:</strong> ${sanitizeHTML(product.brand)}</p>
             <p><strong>Description:</strong> ${sanitizeHTML(product.details)}</p>
             <p><strong>Price:</strong> $${product.price}</p>
-            <button onclick="addToCart({
+            <button id="epcrd" onclick="addToCart({
                 id: ${product.id}, 
                 price: ${product.price}, 
                 title: '${sanitizeHTML(product.title)}', 
@@ -126,6 +126,30 @@ async function fetchWithRetry(url, retries = 3) {
         }
     }
 }
+//cart button detail if user not login first login;
+let userlist = JSON.parse(localStorage.getItem("form"))||[]
+console.log("userlist is here",userlist);
+
+
+// let username = document.querySelector("#signin>a")
+
+
+
+// let userbtn = document.querySelector("#signin>img")
+
+
+
+let cartbtn = document.getElementById("cart")
+
+cartbtn.addEventListener("click",()=>{
+    if(userlist.length>0){
+     window.location.href = "Cart.html"
+    }else{
+        alert("Please Login First")
+        window.location.href = "signin.html"
+    }
+    
+})
 
 // Load Product Details
 fetchProductDetails();

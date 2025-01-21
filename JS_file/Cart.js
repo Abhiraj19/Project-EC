@@ -125,7 +125,7 @@ checkoutButton.addEventListener("click", () => {
     if (Cartarray.length > 0) {
         alert("Proceeding to checkout...");
         // Redirect to checkout page or open modal for checkout process
-        window.location.href = "checkout.html";
+        window.location.href = "payment.html";
     } else {
         alert("Your cart is empty. Add items before proceeding.");
     }

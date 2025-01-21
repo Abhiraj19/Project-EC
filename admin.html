@@ -112,8 +112,33 @@
         #edit-modal .btn-save:hover {
             background-color: #218838;
         }
+        #button{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            text-align: center;
+            /* margin-bottom: 10px; */
+            /* margin-right: 10px; */
+            /* margin-left: 10px; */
+            display: block;
+            /* margin-top: 10px; */
+            padding: 10px;
+            /* display: block; */
 
-        @media (max-width: 768px) {
+        }
+
+        /* Adjustments for tablets and small screens (max-width: 768px) */
+@media (max-width: 768px) {
     body {
         padding: 10px;
     }
@@ -147,8 +172,14 @@
     #edit-modal .modal-actions button {
         padding: 6px 12px;
     }
+
+    #button {
+        font-size: 1rem;
+        padding: 8px;
+    }
 }
 
+/* Adjustments for mobile phones (max-width: 480px) */
 @media (max-width: 480px) {
     h1 {
         font-size: 1.2rem;
@@ -178,12 +209,23 @@
     #edit-modal .modal-actions button {
         font-size: 0.8rem;
     }
+
+    #button {
+        font-size: 0.9rem;
+        padding: 6px;
+    }
 }
+
 
     </style>
 </head>
 <body>
     <h1>Admin - Manage Shipping Details</h1>
+    <button id="button">
+        <a href="Home.html">
+            GoToHome
+        </a>
+    </button>
     <table>
         <thead>
             <tr>
